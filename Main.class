@@ -1,9 +1,0 @@
-class Main {
-
-    public static void main(String[] args) {
-
-        System.out.println("dank memes are the best");
-
-    }
-
-}

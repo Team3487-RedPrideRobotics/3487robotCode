@@ -2,7 +2,7 @@ class Main {
 
     public static void main(Stringn[] args) {
 
-        System.out.println("Hello world!");
+        System.out.println("dank memes are the best");
 
     }
 

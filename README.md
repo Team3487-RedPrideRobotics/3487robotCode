@@ -22,10 +22,14 @@ This is a quick reference guide for what to do when.
 
 
 ## Deleting a branch
-**This section is only for superiors merging**
+**This section is only for superiors after merging**
 1. In Github.com, go to the main code page.
-2. Click on the branches page
-3. Find your branch
+2. Click on the branches tab
+
+![branches tab](https://github.com/team3487/3487robotCode/blob/master/Resources/Readme/Branches.PNG)
+
+3. Find the branch and press the red garbage can
+4. Continue with dank memes
 
 ## Editing
 When you are editing, use your created Java file located in the "All Java Files" folder

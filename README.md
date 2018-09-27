@@ -4,8 +4,12 @@ The purpose of the repository is to increase the workflow and efficiency of the 
 
 *Memes are acceptable.*
 
-## How Git Flow Should Work
+# What to do when.
+This is a quick reference guide for what to do when.
 
-Git is a source control platform meant to increase efficiency, reduce source file conflicts, and backup group software projects.
-
+## Making a branch
+1. In GitHub desktop, click on the `current branch` drop down.
+2. Then, click on new branch.
+3. In the name box, type the name of the problem, in one or two words.
+4. 
 

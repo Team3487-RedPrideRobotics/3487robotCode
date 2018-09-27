@@ -14,3 +14,7 @@ This is a quick reference guide for what to do when.
 4. Press create
 5. Finally, click `publish branch`.
 
+# Editing
+If and when you are editing, use your created Java file located in the "All Java Files" folder
+Create your file and store it in that folder under your name.
+If you have any changes that need looked at, email one of your superiors (Programming captain, Jake A., Schmitt, etc).

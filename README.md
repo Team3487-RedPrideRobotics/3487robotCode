@@ -11,5 +11,6 @@ This is a quick reference guide for what to do when.
 1. In GitHub desktop, click on the `current branch` drop down.
 2. Then, click on new branch.
 3. In the name box, type the name of the problem, in one or two words.
-4. 
+4. Press create
+5. Finally, click `publish branch`.
 

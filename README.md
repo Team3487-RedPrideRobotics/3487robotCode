@@ -27,7 +27,7 @@ This is a quick reference guide for what to do when.
 2. Click on the branches page
 3. Find your branch
 
-# Editing
+## Editing
 When you are editing, use your created Java file located in the "All Java Files" folder
 Create your file and store it in that folder under your name.
 If you have any changes that need looked at, email one of your superiors (Programming captain, Jake A., Schmitt, etc).

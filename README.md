@@ -4,20 +4,9 @@ The purpose of the repository is to increase the workflow and efficiency of the 
 
 *Memes are acceptable.*
 
-**Note: Git and GitHub are two different things.**
-
-**1. Git is the source control software.**
-
-**2. GitHub is the platform that we upload to.**
-
-## How to install Git.
+## How Git Flow Should Work
 **Note:** *This tutorial is how to install git for the school provided laptops.*
 
-Git is a source control platform meant to increase efficiency, reduce source conflicts, and backup group software projects.
-Luckily for us, GitHub is relatively easy to use!
+Git is a source control platform meant to increase efficiency, reduce source file conflicts, and backup group software projects.
 
-1. Visit the git command line page [here](https://git-scm.com/downloads).
-2. Select Windows. *insert image here*
-3. Then choose `64-bit Git for Windows Setup`. *insert image here*
-4. After downloading, run the executable. The window that should pop up 
-5.
+

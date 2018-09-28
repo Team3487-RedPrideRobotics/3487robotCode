@@ -36,7 +36,7 @@ This is a quick reference guide for what to do when.
 1. When you are editing a file used for the robot, create a new branch specifc to the issue.
 - Name it, so that everyone can know what you are doing.
 2. Make your changes
-3. Follow the [Merging a Branch Instructions](#Merging-a-branch).
+3. Follow the above `Merging a branch` instructions.
 
 ## Practicing
 When you are practicing, use a personal folder, located under the JavaPractice folder, named using a first letter of your first name and full last name.

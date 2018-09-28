@@ -45,3 +45,8 @@ When you are practicing, use a personal folder, located under the JavaPractice f
 - Should there be any naming conflicts, use a middle initial aswell.
 
 Create your files and store it in that folder.
+
+## When to commit to master
+The only time you can commit directly to master is when you are editing your practice files.
+If you are a superior merging a branch, you may also commit to master.
+Under any other circumstances, you may not commit to master.

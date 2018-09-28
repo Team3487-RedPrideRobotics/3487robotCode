@@ -45,3 +45,4 @@ When you are practicing, use a personal folder, located under the JavaPractice f
 - Should there be any naming conflicts, use a middle initial aswell.
 
 Create your files and store it in that folder.
+Verification Test

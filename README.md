@@ -4,6 +4,8 @@ The purpose of the repository is to increase the workflow and efficiency of the 
 
 *Memes are acceptable.*
 
+**DO NOT DIRECTLY COMMIT TO MASTER***
+
 # What to do when.
 This is a quick reference guide for what to do when.
 

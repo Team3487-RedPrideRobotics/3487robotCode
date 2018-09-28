@@ -20,3 +20,4 @@ After completed:
 2) "Fetch Origin" button at the top
 3) In 'Summary' type "Added my practice project"
 4) Commit to master
+5) 'Push' button at top

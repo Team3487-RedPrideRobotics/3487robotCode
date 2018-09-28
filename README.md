@@ -32,6 +32,14 @@ This is a quick reference guide for what to do when.
 4. Continue with dank memes
 
 ## Editing
-When you are editing, use your created Java file located in the "All Java Files" folder
-Create your file and store it in that folder under your name.
-If you have any changes that need looked at, email one of your superiors (Programming captain, Jake A., Schmitt, etc).
+**First explained through [Issue #3](https://github.com/team3487/3487robotCode/issues/3).**
+1. When you are editing a file used for the robot, create a new branch specifc to the issue.
+- Name it, so that everyone can know what you are doing.
+2. Make your changes
+3. Follow the [Merging a Branch Instructions](#Merging a branch).
+
+## Practicing
+When you are practicing, use a personal folder, located under the JavaPractice folder, named using a first letter of your first name and full last name.
+- Should there be any naming conflicts, use a middle initial aswell.
+
+Create your files and store it in that folder.

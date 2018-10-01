@@ -4,7 +4,7 @@ The purpose of the repository is to increase the workflow and efficiency of the 
 
 *Memes are acceptable.*
 
-**DO NOT DIRECTLY COMMIT TO MASTER***
+**DO NOT DIRECTLY COMMIT TO MASTER**
 
 # What to do when.
 This is a quick reference guide for what to do when.
@@ -19,7 +19,7 @@ This is a quick reference guide for what to do when.
 ## Merging a branch
 1. After you have committed and pushed changes into your working branch, submit a pull request on GitHub.com
 2. Request a code review from a superior, and wait for approval.
-3. A superior will handle the rest of the merging.
+3. Assign a superior to handle the rest of the merging.
 4. Continue with Dank Memes
 
 
@@ -41,12 +41,9 @@ This is a quick reference guide for what to do when.
 3. Follow the above `Merging a branch` instructions.
 
 ## Practicing
-When you are practicing, use a personal folder, located under the JavaPractice folder, named using a first letter of your first name and full last name.
-- Should there be any naming conflicts, use a middle initial aswell.
+If you want to practice programming in Java, make a fork of the repository.
+Then, on Github Desktop, clone your Fork into your computer.
+Whenever you want to get the latest update for your fork, go to pull request on your repo.
+Then compare changes of your repo to the main team3487 repo.
+*It is genereally recommended to update your repository after every official release*
 
-Create your files and store it in that folder.
-
-## When to commit to master
-The only time you can commit directly to master is when you are editing your practice files.
-If you are a superior merging a branch, you may also commit to master.
-Under any other circumstances, you may not commit to master.

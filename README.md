@@ -47,3 +47,9 @@ Whenever you want to get the latest update for your fork, go to pull request on 
 Then compare changes of your repo to the main team3487 repo.
 *It is genereally recommended to update your repository after every official release*
 
+## Superior List
+Schmitt
+Taylor
+Brenden
+Jake
+(List subject to change)

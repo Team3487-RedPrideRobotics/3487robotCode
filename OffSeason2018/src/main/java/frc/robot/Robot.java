@@ -5,10 +5,14 @@ import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.Spark;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 
-public class Robot extends IterativeRobot {
+import 
+
+public class Team3487Bot extends IterativeRobot {
   private DifferentialDrive myRobot;
   private Joystick leftStick;
   private Joystick rightStick;
+
+  //RobotController.getBatteryVoltage();
 
   @Override
   public void robotInit() {

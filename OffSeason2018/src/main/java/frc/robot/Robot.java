@@ -5,9 +5,7 @@ import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.Spark;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 
-import 
-
-public class Team3487Bot extends IterativeRobot {
+public class Robot extends IterativeRobot {
   private DifferentialDrive myRobot;
   private Joystick leftStick;
   private Joystick rightStick;

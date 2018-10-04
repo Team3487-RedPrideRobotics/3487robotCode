@@ -5,6 +5,8 @@ import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.I2C.Port;
 import edu.wpi.first.wpilibj.Timer;
 
+//import net.bak3dnet.robotics.display.RevDigitDisplay;
+
 public class Team3487Bot extends IterativeRobot {
 
   //RobotController.getBatteryVoltage();
@@ -45,6 +47,8 @@ public class Team3487Bot extends IterativeRobot {
     Timer.delay(0.1);
     i2c.writeBulk(a);
     Timer.delay(2);
+    byte[] array = {off[0],off[0],off[0],off[0],a[0],a[1]};
+    i2c.writeBulk(array);
 
   }
 

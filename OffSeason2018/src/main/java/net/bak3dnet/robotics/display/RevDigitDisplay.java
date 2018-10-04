@@ -1,4 +1,4 @@
-package net.bak3dnet.robotics;
+package net.bak3dnet.robotics.display;
 
 import edu.wpi.first.wpilibj.I2C;
 import edu.wpi.first.wpilibj.I2C.Port;
@@ -6,7 +6,7 @@ import edu.wpi.first.wpilibj.I2C.Port;
 //import edu.wpi.first.wpilibj.AnalogInput;
 
 
-class RevDigitDisplay {
+public class RevDigitDisplay {
 
     I2C i2c;
 
@@ -15,6 +15,19 @@ class RevDigitDisplay {
         i2c = new I2C(Port.kMXP,0x70);
 
     }
+
+    public RevDigitDisplay(String startingText) {
+
+
+    }
+
+    public void setText() {
+
+
+
+    }
+
+    //public DChar[]
 
 
 }

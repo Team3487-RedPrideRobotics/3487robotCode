@@ -29,8 +29,8 @@ public class Team3487Bot extends IterativeRobot {
     byte[] off = new byte[1];
 
     byte[] a = new byte[2];
-    a[1] = (byte)0b01111000;
-    a[0] = (byte) 0b00000101;
+    a[0] = (byte)0b01111000;
+    a[1] = (byte) 0b00000101;
 
     osc[0] = (byte)0x21;
     bright[0] = (byte)0xEF;
@@ -45,8 +45,8 @@ public class Team3487Bot extends IterativeRobot {
     Timer.delay(1);
     i2c.writeBulk(off);
     Timer.delay(0.1);
-    i2c.writeBulk(a);
-    Timer.delay(2);
+
+    //Writes 'a' to the far left char on the display
     byte[] array = {off[0],off[0],off[0],off[0],a[0],a[1]};
     i2c.writeBulk(array);
     Timer.delay(5);

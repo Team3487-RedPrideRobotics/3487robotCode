@@ -9,32 +9,43 @@ package net.bak3dnet.robotics.display;
  */
 class DChar {
 
-    private byte[] matrixId;
+    private byte[] matrixData;
+    private char encapsulatedChar;
     
 /**
  * Don't use the DChar constructor 
  * @see DCharFactory
  * 
- * @param includesDecimal
+ * @param encapsulatedChar The encapsulated char that is represented
+ * @param hasDecimalPoint True if there should be a decimal in the current display character
+ * @param matrixData The binary data sent to the i2c device
  * 
  */
-    public DChar(byte[] matrixId) {
+    public DChar(char encapsulatedChar, boolean hasDecimalPoint, byte[] matrixData) {
 
-        this.matrixId = matrixId;
+        this.matrixData = matrixData;
 
     }
     
     /**
      * 
      * @return Returns a binary array for the led matrix.
+     * 
      */
     public byte[] getBinary() {
 
-        return this.matrixId;
+        return this.matrixData;
 
     }
     
+    /**
+     * @return Returns the encapsulated char
+    */
 
+    public char getEncapsulatedChar() {
 
+        return this.encapsulatedChar;
+
+    }
 
 }

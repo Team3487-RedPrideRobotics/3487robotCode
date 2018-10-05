@@ -31,6 +31,10 @@ public class DCharFactory {
         //char1. . .
 
         //char2. . .
+
+        //. . .
+        
+        //charz . . .
         
         characterRegistry = Collections.unmodifiableMap(aMap);
 
@@ -38,8 +42,9 @@ public class DCharFactory {
 
     /**
      * 
-     * @param beforeString
+     * @param beforeString The string before it is converted into a DChar Array
      * @return Returns a processed array of DChars.
+     * 
      */
     public static DChar[] createDChars(String beforeString) {
         //Regex stuff
@@ -70,12 +75,12 @@ public class DCharFactory {
              */
             if(beforeString.charAt(i+1) == '.') {
 
-                convertedString[i] = new DChar(getBinaryMatrix(preChar));
+                convertedString[i] = new DChar(preChar, false, getBinaryMatrix(preChar));
                 i++;
 
             } else {
 
-                convertedString[i] = new DChar(getBinaryMatrix(preChar));
+                convertedString[i] = new DChar(preChar, false, getBinaryMatrix(preChar));
 
             }  
         
@@ -86,10 +91,16 @@ public class DCharFactory {
 
     }
 
-    //
+    /**
+     * @return Returns the matrix data for the passed char
+     * 
+     * @param characterToMatrix The character to become the matrix
+     */
     private static byte[] getBinaryMatrix(char charToMatrix) {
 
-        return characterRegistry.get(charToMatrix);
+        byte[] defaultValue = {(byte)0b11111111,(byte)0b11111011};
+
+        return characterRegistry.getOrDefault(charToMatrix,defaultValue);
 
     } 
 

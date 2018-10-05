@@ -14,13 +14,23 @@ import java.util.regex.Pattern;
 public class DCharFactory {
 
     private static final Map<Character,byte[]> characterRegistry;
-    static{
+
+    //Initialize Static Variables
+    static {
 
         Map<Character,byte[]> aMap = new HashMap<Character,byte[]>();
+
+        /**
+         * TODO: Fill the hash map with variables we know about.
+         */
 
         //This is the only way I currently understand how to set the matrix
         byte[] char0 = {(byte) 0b00000000,(byte)0b00000000};
         aMap.put('0', char0);
+
+        //char1. . .
+
+        //char2. . .
         
         characterRegistry = Collections.unmodifiableMap(aMap);
 
@@ -60,12 +70,12 @@ public class DCharFactory {
              */
             if(beforeString.charAt(i+1) == '.') {
 
-                convertedString[i] = new DChar(getBinary(preChar));
+                convertedString[i] = new DChar(getBinaryMatrix(preChar));
                 i++;
 
             } else {
 
-                convertedString[i] = new DChar(getBinary(preChar));
+                convertedString[i] = new DChar(getBinaryMatrix(preChar));
 
             }  
         
@@ -76,15 +86,10 @@ public class DCharFactory {
 
     }
 
+    //
+    private static byte[] getBinaryMatrix(char charToMatrix) {
 
-    private static byte[] getBinary(char charToMatrix) {
-
-        /**
-         * TODO: Fill the hash map with variables we know about.
-         */
-
-        //Tempoary
-        return new byte[2];
+        return characterRegistry.get(charToMatrix);
 
     } 
 

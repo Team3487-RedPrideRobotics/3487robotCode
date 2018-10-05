@@ -79,7 +79,9 @@ public class DCharFactory {
 
     private static byte[] getBinary(char charToMatrix) {
 
-        
+        /**
+         * TODO: Fill the hash map with variables we know about.
+         */
 
         //Tempoary
         return new byte[2];

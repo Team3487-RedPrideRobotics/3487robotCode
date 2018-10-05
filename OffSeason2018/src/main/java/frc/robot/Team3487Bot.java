@@ -49,6 +49,63 @@ public class Team3487Bot extends IterativeRobot {
     Timer.delay(2);
     byte[] array = {off[0],off[0],off[0],off[0],a[0],a[1]};
     i2c.writeBulk(array);
+    Timer.delay(5);
+
+    /**
+     * I hypothesize that the i2c device reads bytes in chunks of eight
+     * Each pair represents one 15 segment display.
+     * Hypothesis: The first eight lights (from documentation) will come one, then the next set.
+     */
+    byte[] repititionArray = {((byte)0b00000000),((byte)0b00000001),off[0],off[0],off[0],off[0],off[0],off[0]};
+    i2c.writeBulk(repititionArray);
+    Timer.delay(1);
+    repititionArray[1] = (byte)0b00000011;
+    i2c.writeBulk(repititionArray);
+    Timer.delay(1);
+    repititionArray[1] = (byte)0b00000111;
+    i2c.writeBulk(repititionArray);
+    Timer.delay(1);
+    repititionArray[1] = (byte)0b00001111;
+    i2c.writeBulk(repititionArray);
+    Timer.delay(1);
+    repititionArray[1] = (byte)0b00011111;
+    i2c.writeBulk(repititionArray);
+    Timer.delay(1);
+    repititionArray[1] = (byte)0b00111111;
+    i2c.writeBulk(repititionArray);
+    Timer.delay(1);
+    repititionArray[1] = (byte)0b01111111;
+    i2c.writeBulk(repititionArray);
+    Timer.delay(1);
+    repititionArray[1] = (byte)0b11111111;
+    i2c.writeBulk(repititionArray);
+    Timer.delay(1);
+//Switch between vars
+    repititionArray[0] = (byte)0b00000001;
+    i2c.writeBulk(repititionArray);
+    Timer.delay(1);
+    repititionArray[0] = (byte)0b00000011;
+    i2c.writeBulk(repititionArray);
+    Timer.delay(1);
+    repititionArray[0] = (byte)0b00000111;
+    i2c.writeBulk(repititionArray);
+    Timer.delay(1);
+    repititionArray[0] = (byte)0b00001111;
+    i2c.writeBulk(repititionArray);
+    Timer.delay(1);
+    repititionArray[0] = (byte)0b00011111;
+    i2c.writeBulk(repititionArray);
+    Timer.delay(1);
+    repititionArray[0] = (byte)0b00111111;
+    i2c.writeBulk(repititionArray);
+    Timer.delay(1);
+    repititionArray[0] = (byte)0b01111111;
+    i2c.writeBulk(repititionArray);
+    Timer.delay(1);
+    repititionArray[0] = (byte)0b11111111;
+    i2c.writeBulk(repititionArray);
+    Timer.delay(1);
+
 
   }
 

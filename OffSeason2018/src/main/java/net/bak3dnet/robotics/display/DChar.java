@@ -12,9 +12,9 @@ class DChar {
     private byte[] matrixId;
     
 /**
- * Don't use the DChar constructor
+ * Don't use the DChar constructor 
+ * @see DCharFactory
  * 
- * @param dchar
  * @param includesDecimal
  * 
  */

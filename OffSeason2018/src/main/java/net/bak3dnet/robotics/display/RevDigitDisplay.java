@@ -6,6 +6,7 @@ import edu.wpi.first.wpilibj.I2C.Port;
 //import edu.wpi.first.wpilibj.AnalogInput;
 
 import net.bak3dnet.robotics.display.DChar;
+import net.bak3dnet.robotics.display.DCharFactory;
 
 /**
  * 
@@ -29,10 +30,12 @@ public class RevDigitDisplay {
      * @param startingText The string that should be placed on the display
      * 
      * @return Returns a pre-initialized Display with text automatically
+     * 
      */
     public RevDigitDisplay(String startingText) {
 
-        
+        DChar[] data = DCharFactory.createDChars(startingText);
+        //TODO: Add a data buffer for the screen updater.
 
     }
 

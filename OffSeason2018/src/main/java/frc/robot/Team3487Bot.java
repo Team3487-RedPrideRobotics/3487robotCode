@@ -55,6 +55,8 @@ public class Team3487Bot extends IterativeRobot {
      * I hypothesize that the i2c device reads bytes in chunks of eight
      * Each pair represents one 15 segment display.
      * Hypothesis: The first eight lights (from documentation) will come one, then the next set.
+     *
+     * TODO: Replace experiment to match the data found in the programming references folder.
      */
     byte[] repititionArray = {((byte)0b00000000),((byte)0b00000001),off[0],off[0],off[0],off[0],off[0],off[0]};
     i2c.writeBulk(repititionArray);
@@ -80,7 +82,7 @@ public class Team3487Bot extends IterativeRobot {
     repititionArray[1] = (byte)0b11111111;
     i2c.writeBulk(repititionArray);
     Timer.delay(1);
-//Switch between vars
+//Switch between chars
     repititionArray[0] = (byte)0b00000001;
     i2c.writeBulk(repititionArray);
     Timer.delay(1);

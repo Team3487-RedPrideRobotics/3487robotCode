@@ -13,8 +13,7 @@ class DChar {
     private char encapsulatedChar;
     
 /**
- * Don't use the DChar constructor 
- * @see DCharFactory
+ * Don't use the DChar constructor. Please see {@link #DCharFactory}
  * 
  * @param encapsulatedChar The encapsulated char that is represented
  * @param hasDecimalPoint True if there should be a decimal in the current display character
@@ -23,7 +22,22 @@ class DChar {
  */
     public DChar(char encapsulatedChar, boolean hasDecimalPoint, byte[] matrixData) {
 
-        this.matrixData = matrixData;
+        int preInt = (int) matrixData[1];
+
+        if(hasDecimalPoint) {
+            //This edits the bit with the decimal point
+            preInt+=64;
+            this.matrixData = new byte[2];
+
+            this.matrixData[0] = matrixData[0];
+
+            this.matrixData[1] =(byte) preInt;
+
+        } else {
+
+            this.matrixData=matrixData;
+            
+        }
 
     }
     

@@ -1,6 +1,7 @@
 /**
  * 
  * The entirety of this file is for example
+ *  Self Note: https://github.com/1504/DigitBoard/blob/master/DigitBoard.java
  * 
  * 
 \package org.usfirst.frc.team3216.robot; // might need to change this number

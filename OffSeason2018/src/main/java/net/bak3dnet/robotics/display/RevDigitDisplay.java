@@ -8,6 +8,8 @@ import edu.wpi.first.wpilibj.I2C.Port;
 import net.bak3dnet.robotics.display.DChar;
 import net.bak3dnet.robotics.display.DCharFactory;
 
+import net.bak3dnet.robotics.display.modules.DisplayModuleBase;
+
 /**
  * 
  * @author Jake Armstrong
@@ -34,12 +36,43 @@ public class RevDigitDisplay {
      *  - Default set to bright
      * 
      */
-    private final byte oscilatorOn = (byte) 0x21; 
-    private final byte oscilatorOff = (byte) 0x20;
+    private final byte[] oscilatorOn = {(byte) 0x21}; 
+    private final byte[] oscilatorOff = {(byte) 0x20};
 
-    private final byte defBlinking = (byte) 0x81;
+    private final byte[] defBlinking = {(byte) 0x81};
 
-    private final byte defBrightness = (byte) 0xEF;
+    private final byte[] defBrightness = {(byte) 0xEF};
+
+    private boolean shouldRun;
+
+    private DisplayModuleBase activeModule;
+    private DisplayTaskManager taskManager;
+
+
+    private static class DisplayTaskManager implements Runnable{
+
+        private RevDigitDisplay display;
+
+        public DisplayTaskManager(RevDigitDisplay display) {
+
+            this.display = display;
+
+        }
+
+        public void run() {
+            while(!Thread.interrupted()){
+                display.getActiveModule().task(this.display);
+            /*
+            This is not that good because it doesn't allow for 
+            ALT:
+            this.display.setText(display.getActiveModule.task)
+            */
+            }
+
+        }
+
+    }
+
 
     /**
      * Checks to see that a singleton has been made.
@@ -68,6 +101,7 @@ public class RevDigitDisplay {
 
         DChar[] string = DCharFactory.getDChars(setToString);
         singleton.setText(string);
+
         return singleton;
 
     }
@@ -95,9 +129,29 @@ public class RevDigitDisplay {
 
         i2c = new I2C(Port.kMXP,0x70);
         
+        i2c.writeBulk(oscilatorOn);
+
+        i2c.writeBulk(defBrightness);
+
+        i2c.writeBulk(defBlinking);
+
+        taskManager = new DisplayTaskManager(this);
 
     }
 
+    public void setActiveModule(DisplayModuleBase module) {
+
+        this.activeModule = module;
+
+
+
+    }
+
+    public DisplayModuleBase getActiveModule() {
+
+        return this.activeModule;
+
+    }
 
     /**
      * Sets the string that is displayed on the display
@@ -108,6 +162,10 @@ public class RevDigitDisplay {
     public void setText(DChar[] text) {
 
         //TODO: MULTITHREADING
+
+        byte[] preSend =  {(byte)0b00001111,(byte)0b00001111}; 
+
+        i2c.writeBulk(preSend);
 
     }
 

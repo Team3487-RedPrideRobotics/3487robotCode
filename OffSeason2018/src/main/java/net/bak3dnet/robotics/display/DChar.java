@@ -7,7 +7,7 @@ package net.bak3dnet.robotics.display;
  * @since 0.1.0
  * 
  */
-class DChar {
+public class DChar {
 
     private byte[] matrixData;
     private char encapsulatedChar;

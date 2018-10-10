@@ -51,13 +51,27 @@ public class TickerTapeModule implements DisplayModuleBase {
 
     public void setDisplayText(Object object) {
 
-        this.setDisplayText(object, 1);
+        if(object.toString().charAt(object.toString().length()-1) == ' ') {
+
+            setDisplayText(object.toString(),0);
+
+        } else {
+
+            setDisplayText(object.toString(), 1);
+
+        }
 
     }
 
     public void setDisplayText(Object object, int spacing) {
 
         displayText = object.toString();
+
+        for(int i = 0; i < spacing; i++) {
+
+            displayText += " ";
+
+        }
         
         this.displayBuffer = DCharFactory.getDChars(displayText);
 
@@ -65,51 +79,151 @@ public class TickerTapeModule implements DisplayModuleBase {
 
     }
 
-    public void setDisplayText(boolean[] bool) {}
+    public void setDisplayText(boolean bool, boolean displayAsWord) {
 
-    public void setDisplayText(boolean[] bool, int spacing) {}
+        if(displayAsWord) {
+            setDisplayText(String.valueOf(bool));
+        } else {
 
-    public void setDisplayText(int number) {}
+            setDisplayText(bool ? "1":"0");
 
-    public void setDisplayText(int number, int spacing) {}
+        }
 
-    public void setDisplayText(byte bytes) {
+    }
 
-        String binaryString = String.format("%8s", Integer.toBinaryString((int)bytes&0xFF)).replace(' ','0');
+    public void setDisplayText(boolean bool, boolean displayAsWord, int spacing) {
+
+        if(displayAsWord) {
+
+            setDisplayText(String.valueOf(bool), spacing);
+
+        } else {
+
+            setDisplayText(bool ? "1":"0", spacing);
+
+        }
+
+    }
+
+    public void setDisplayText(int number) {
+
+        setDisplayText(Integer.toString(number));
+
+    }
+
+    public void setDisplayText(int number, int spacing) {
+
+        setDisplayText(Integer.toString(number), spacing);
+
+    }
+
+    public void setDisplayText(byte Byte) {
+
+        String binaryString = String.format("%8s", Integer.toBinaryString((int)Byte&0xFF)).replace(' ','0');
     
         this.setDisplayText(binaryString);
     }
 
-    public void setDisplayText(byte bytes, int spacing) {
+    public void setDisplayText(byte Byte, int spacing) {
 
-        String binaryString = String.format("%8s", Integer.toBinaryString((int)bytes&0xFF)).replace(' ','0');
+        String binaryString = String.format("%8s", Integer.toBinaryString((int)Byte&0xFF)).replace(' ','0');
     
         this.setDisplayText(binaryString, spacing);
     }
 
-    public void setDisplayText(long number) {}
+    public void setDisplayText(long number) {
 
-    public void setDisplayText(long number, int spacing) {}
+        setDisplayText(Long.toString(number));
 
-    public void setDisplayText(short number) {}
+    }
 
-    public void setDisplayText(short number, int spacing) {}
+    public void setDisplayText(long number, int spacing) {
 
-    public void setDisplayText(float number) {}
+        setDisplayText(Long.toString(number), spacing);
 
-    public void setDisplayText(float number, int spacing) {}
+    }
 
-    public void setDisplayText(double number) {}
+    public void setDisplayText(short number) {
 
-    public void setDisplayText(double number, int spacing) {}
+        setDisplayText(Short.toString(number));
 
-    public void setDisplayText(char character) {}
+    }
 
-    public void setDisplayText(char character, int spacing) {}
+    public void setDisplayText(short number, int spacing) {
 
-    public void setDisplayText(Object[] objects) {}
+        setDisplayText(Short.toString(number), spacing);
 
-    public void setDisplayText(Object[] objects, int spacing) {}
+    }
+
+    public void setDisplayText(float number) {
+
+        setDisplayText(Float.toString(number));
+        
+    }
+
+    public void setDisplayText(float number, int spacing) {
+
+        setDisplayText(Float.toString(number), spacing);
+
+    }
+
+    public void setDisplayText(double number) {
+
+        setDisplayText(Double.toString(number));
+
+    }
+
+    public void setDisplayText(double number, int spacing) {
+
+        setDisplayText(Double.toString(number), spacing);
+
+    }
+
+    public void setDisplayText(char character) {
+
+        setDisplayText(Character.toString(character));
+
+    }
+
+    public void setDisplayText(char character, int spacing) {
+
+        setDisplayText(Character.toString(character), spacing);
+
+    }
+
+    public void setDisplayText(Object[] objects) {
+
+        String primaryString = new String();
+
+        for(int i = 0; i < objects.length; i++) {
+
+            primaryString += objects[i].toString();
+            primaryString += " ";
+
+        }
+
+        setDisplayText(primaryString);
+
+    }
+
+    public void setDisplayText(Object[] objects, int spacing) {
+
+        String primaryString = new String();
+
+        for(int i = 0; i < objects.length;i++) {
+
+            primaryString += objects[i].toString();
+            for(int j = 0; j < spacing; j++) {
+
+                primaryString+=" ";
+
+            }
+
+        }
+
+        setDisplayText(primaryString);
+
+    }
 
     public DChar[] getCurrentDChars() {
 

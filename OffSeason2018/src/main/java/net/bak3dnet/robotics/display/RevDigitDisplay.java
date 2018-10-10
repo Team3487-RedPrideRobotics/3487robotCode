@@ -88,7 +88,6 @@ public class RevDigitDisplay {
 
     }
 
-
     /**
      * Checks to see that a singleton has been made.
      */

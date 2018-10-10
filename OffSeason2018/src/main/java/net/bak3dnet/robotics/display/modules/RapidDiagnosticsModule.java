@@ -67,7 +67,7 @@ public class RapidDiagnosticsModule extends TickerTapeModule implements DisplayM
             }
             
             TickerTapeModule intro = new TickerTapeModule();
-            intro.setDisplayText("Rapid Diagnostics Tool v0.1");
+            intro.setDisplayText("Rapid Diagnostics Tool v0.1", 4);
             intro.task(display, delta);
             if(intro.roundsCompleted >= 1) {
 

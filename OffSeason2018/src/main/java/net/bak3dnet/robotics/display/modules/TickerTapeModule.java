@@ -35,6 +35,7 @@ public class TickerTapeModule implements DisplayModuleBase {
         if(sumDeltaTime >= charPassRate) {
 
             display.setText(getCurrentDChars());
+            sumDeltaTime = 0;
 
         }
 

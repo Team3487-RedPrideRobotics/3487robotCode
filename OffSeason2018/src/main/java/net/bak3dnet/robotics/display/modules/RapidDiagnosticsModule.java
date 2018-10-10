@@ -60,6 +60,11 @@ public class RapidDiagnosticsModule extends TickerTapeModule implements DisplayM
 
         if(!introPlayed) {
 
+            if(display.buttonB.get() == true) {
+
+                introPlayed = true;
+
+            }
             
             TickerTapeModule intro = new TickerTapeModule();
             intro.setDisplayText("Rapid Diagnostics Tool v0.1");
@@ -74,6 +79,12 @@ public class RapidDiagnosticsModule extends TickerTapeModule implements DisplayM
 
         if(!moduleIntroPlayed) {
         
+            if(display.buttonB.get() == true) {
+
+                moduleIntroPlayed = true;
+
+            }
+
             super.task(display, delta);
 
             if(super.roundsCompleted >= 1) {
@@ -84,7 +95,13 @@ public class RapidDiagnosticsModule extends TickerTapeModule implements DisplayM
 
         } else {
 
-            activeModule.task(display, delta);         
+            activeModule.task(display, delta);
+            
+            if(display.buttonB.get() == true) {
+
+                this.nextModule();
+
+            }
 
         }
     }

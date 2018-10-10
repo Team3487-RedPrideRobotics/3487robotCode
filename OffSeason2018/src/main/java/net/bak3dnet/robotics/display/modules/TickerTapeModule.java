@@ -3,6 +3,9 @@ package net.bak3dnet.robotics.display.modules;
 import net.bak3dnet.robotics.display.modules.DisplayModuleBase;
 import net.bak3dnet.robotics.display.RevDigitDisplay;
 import net.bak3dnet.robotics.display.DChar;
+import net.bak3dnet.robotics.display.DCharFactory;
+
+import java.util.Arrays;
 
 public class TickerTapeModule implements DisplayModuleBase {
 
@@ -15,6 +18,14 @@ public class TickerTapeModule implements DisplayModuleBase {
     protected int currentPosition;
     protected int roundsCompleted;
     protected int spacing;
+    protected DChar[] displayBuffer;
+    protected DChar[] outDString;
+
+    public TickerTapeModule() {
+
+        Arrays.fill(outDString, DCharFactory.getDChar(' ', false));
+
+    }
     
     @Override
     public void task(RevDigitDisplay display, double deltaTime) {
@@ -40,13 +51,17 @@ public class TickerTapeModule implements DisplayModuleBase {
 
     public void setDisplayText(Object object) {
 
-        displayText = object.toString();
+        this.setDisplayText(object, 1);
 
     }
 
     public void setDisplayText(Object object, int spacing) {
 
         displayText = object.toString();
+        
+        this.displayBuffer = DCharFactory.getDChars(displayText);
+
+        this.close();
 
     }
 
@@ -98,13 +113,25 @@ public class TickerTapeModule implements DisplayModuleBase {
 
     public DChar[] getCurrentDChars() {
 
-        DChar[] outString = new DChar[4];
+        outDString[0] = outDString[1];
+        outDString[1] = outDString[2];
+        outDString[2] = outDString[3];
 
-        //TODO Actually ticker.
+        try {
+
+            outDString[3] = displayBuffer[currentPosition];
+
+        } catch(IndexOutOfBoundsException e) {
+
+            outDString[3] = displayBuffer[currentPosition];
+            currentPosition = 0;
+            roundsCompleted++;
+
+        }
 
         currentPosition++;
 
-        return outString;
+        return outDString;
 
     }
 

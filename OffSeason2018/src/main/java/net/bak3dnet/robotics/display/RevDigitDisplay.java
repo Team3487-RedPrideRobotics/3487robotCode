@@ -109,7 +109,7 @@ public class RevDigitDisplay {
         return singleton;
 
     }
-
+    
     public static RevDigitDisplay getInstance(String setToString) {
 
         singletonCheck();

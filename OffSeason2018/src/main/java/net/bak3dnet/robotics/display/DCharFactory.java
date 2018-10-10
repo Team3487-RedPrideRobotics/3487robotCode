@@ -189,6 +189,16 @@ public class DCharFactory {
 
     }
 
+    public static DChar getDChar(char preChar, boolean withDecimal) {
+
+        String capStr = Character.toString(preChar);
+
+        char capChar = capStr.toUpperCase().toCharArray()[0];
+
+        return new DChar(capChar, withDecimal, characterRegistry.get(capChar));
+
+    }
+
     /**
      * @return Returns the matrix data for the passed char
      * 

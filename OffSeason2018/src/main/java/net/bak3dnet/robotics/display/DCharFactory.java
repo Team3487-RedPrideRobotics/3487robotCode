@@ -20,10 +20,6 @@ public class DCharFactory {
 
         Map<Character,byte[]> aMap = new HashMap<Character,byte[]>();
 
-        /**
-         * TODO: Fill the hash map with variables we know about.
-         */
-
         //This is the only way I currently understand how to set the matrix
         byte[] char0 = {(byte) 0b00111111,(byte)0b00001100};
         aMap.put('0', char0);
@@ -160,13 +156,15 @@ public class DCharFactory {
 
         }
 
+        String CAPSLOCK = beforeString.toUpperCase();
+
         //Makes an array of all the DChars without the inlcuded periods.
         DChar[] convertedString = new DChar[beforeString.length()-periodCount];
         
         for(int i = 0; i < beforeString.length(); i++) {
 
             //Because I am lazy
-            char preChar = beforeString.charAt(i);
+            char preChar = CAPSLOCK.charAt(i);
 
             /**
              * If it has a decimal for the next character, we want that to bring the period to the end of this character

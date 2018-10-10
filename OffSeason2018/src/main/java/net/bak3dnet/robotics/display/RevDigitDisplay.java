@@ -1,5 +1,6 @@
 package net.bak3dnet.robotics.display;
 
+import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.I2C;
 import edu.wpi.first.wpilibj.I2C.Port;
 //import edu.wpi.first.wpilibj.DigitalInput;
@@ -9,6 +10,7 @@ import net.bak3dnet.robotics.display.DChar;
 import net.bak3dnet.robotics.display.DCharFactory;
 
 import net.bak3dnet.robotics.display.modules.DisplayModuleBase;
+import net.bak3dnet.robotics.display.modules.TickerTapeModule;
 
 /**
  * 
@@ -36,17 +38,20 @@ public class RevDigitDisplay {
      *  - Default set to bright
      * 
      */
-    private final byte[] oscilatorOn = {(byte) 0x21}; 
-    private final byte[] oscilatorOff = {(byte) 0x20};
+    public static final byte[] oscilatorOn = {(byte) 0x21}; 
+    public static final byte[] oscilatorOff = {(byte) 0x20};
 
     private final byte[] defBlinking = {(byte) 0x81};
 
     private final byte[] defBrightness = {(byte) 0xEF};
 
-    private boolean shouldRun;
+    public DigitalInput buttonA;
+    public DigitalInput buttonB;
 
     private DisplayModuleBase activeModule;
     private DisplayTaskManager taskManager;
+
+    private Thread taskCoordinator;
 
 
     private static class DisplayTaskManager implements Runnable{
@@ -60,13 +65,21 @@ public class RevDigitDisplay {
         }
 
         public void run() {
+            long previousTime = System.currentTimeMillis();
             while(!Thread.interrupted()){
-                display.getActiveModule().task(this.display);
-            /*
-            This is not that good because it doesn't allow for 
-            ALT:
-            this.display.setText(display.getActiveModule.task)
-            */
+
+                long currentTime = System.currentTimeMillis();
+
+                short deltaTime = (short)(currentTime - previousTime);
+
+                display.getActiveModule().task(this.display,deltaTime);
+
+                previousTime = currentTime;
+
+                try {
+					Thread.sleep(1);
+				} catch (InterruptedException e) {}
+
             }
 
         }
@@ -95,12 +108,16 @@ public class RevDigitDisplay {
 
     }
 
+    public void standardDisplay() {}
+
     public static RevDigitDisplay getInstance(String setToString) {
 
         singletonCheck();
 
-        DChar[] string = DCharFactory.getDChars(setToString);
-        singleton.setText(string);
+        TickerTapeModule module = new TickerTapeModule();
+        module.setDisplayText(setToString);
+
+        singleton.setActiveModule(module);
 
         return singleton;
 
@@ -110,7 +127,11 @@ public class RevDigitDisplay {
 
         singletonCheck();
 
-        singleton.setText(dChars);
+        TickerTapeModule tickerTapeModule = new TickerTapeModule();
+        
+        tickerTapeModule.setDisplayText(dChars);
+
+        singleton.setActiveModule(tickerTapeModule);
 
         return singleton;
 
@@ -120,12 +141,18 @@ public class RevDigitDisplay {
 
         singletonCheck();
 
-        singleton.setText(DCharFactory.getDChars(Double.toString(number)));
+        TickerTapeModule tickerTapeModule = new TickerTapeModule();
+        tickerTapeModule.setDisplayText(number);
+
+        singleton.setActiveModule(tickerTapeModule);
 
         return singleton;
     }
 
     private RevDigitDisplay() {
+
+        buttonA = new DigitalInput(19);
+        buttonB = new DigitalInput(20);
 
         i2c = new I2C(Port.kMXP,0x70);
         
@@ -141,7 +168,15 @@ public class RevDigitDisplay {
 
     public void setActiveModule(DisplayModuleBase module) {
 
+        if(this.taskCoordinator != null) {
+            
+            this.taskCoordinator.interrupt();
+        
+        }
+        
         this.activeModule = module;
+        this.taskCoordinator = new Thread(taskManager);
+        this.taskCoordinator.start();
 
 
 
@@ -157,11 +192,26 @@ public class RevDigitDisplay {
      * Sets the string that is displayed on the display
      * 
      * @param text The array of DChars that will scroll on the displays
+     * Warning the DChar Array will be truncated to four characters.
      * 
      */
     public void setText(DChar[] text) {
 
-        //TODO: MULTITHREADING
+        DChar[] truncated = new DChar[4];
+
+        if(text.length>4) {
+
+            for(int i =0; i <4;i++) {
+
+                truncated[i] = text[i];
+
+            }
+
+        } else {
+
+            truncated = text;
+
+        }
 
         byte[] preSend =  {(byte)0b00001111,(byte)0b00001111}; 
 
@@ -169,5 +219,33 @@ public class RevDigitDisplay {
 
     }
 
+    /**
+     * Sets the string that is displayed on the display;
+     * 
+     * @param text The string that will be displayed on the display.
+     * Warning! The string will be truncated to four characters.
+     */
+    public void setText(String text) {
+
+        DChar[] unTruncated = DCharFactory.getDChars(text);
+        DChar[] truncated = new DChar[4];
+
+        if(text.length() > 4) {
+
+            for(int i = 0; i<4; i++) {
+
+                truncated[i] = unTruncated[i];
+    
+            }
+
+        } else {
+
+            truncated = unTruncated;
+
+        }
+
+        setText(truncated);
+
+    }
 
 }

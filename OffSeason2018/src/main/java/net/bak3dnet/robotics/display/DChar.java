@@ -11,6 +11,13 @@ public class DChar {
 
     private byte[] matrixData;
     private char encapsulatedChar;
+
+    @Override
+    public String toString() {
+
+        return Character.toString(encapsulatedChar);
+
+    }
     
 /**
  * Don't use the DChar constructor. Please see {@link #DCharFactory}

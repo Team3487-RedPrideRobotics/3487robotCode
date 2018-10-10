@@ -4,17 +4,12 @@ import java.text.DecimalFormat;
 import java.text.NumberFormat;
 
 import edu.wpi.first.wpilibj.RobotController;
-import net.bak3dnet.robotics.display.DChar;
-import net.bak3dnet.robotics.display.DCharFactory;
 import net.bak3dnet.robotics.display.RevDigitDisplay;
-import net.bak3dnet.robotics.display.modules.DisplayModuleBase;
 
-public class BatteryPercentModule extends DisplayModuleBase {
+public class BatteryPercentModule extends TickerTapeModule implements DisplayModuleBase {
 
     private static final NumberFormat subHundo;
     private static final NumberFormat supHundo;
-
-    private double previousVoltage = 0;
 
     static {
 
@@ -24,14 +19,26 @@ public class BatteryPercentModule extends DisplayModuleBase {
     }
 
     @Override
-    public void task(RevDigitDisplay display) {
+    public void task(RevDigitDisplay display, double deltaTime) {
+
+        display.setText(getFormattedPercentage());
+
+    }
+
+    private double getPercentage() {
+        
+        return (RobotController.getBatteryVoltage()-12D)*10D;
+
+    }
+
+    private String getFormattedPercentage() {
 
         double percentage = getPercentage();
         String formattedDecimal;
 
         if(percentage > 100) {
 
-            formattedDecimal = subHundo.format(percentage);
+            formattedDecimal = supHundo.format(percentage);
 
         } else {
 
@@ -39,24 +46,13 @@ public class BatteryPercentModule extends DisplayModuleBase {
 
         }
 
-
+        return formattedDecimal;
 
     }
 
-    public double getPercentage() {
+    public String toString() {
 
-        double voltage = RobotController.getBatteryVoltage();
-
-            while(true) {
-
-                if(previousVoltage != voltage) {
-
-                    return (RobotController.getBatteryVoltage()-12D)*100D;
-
-                }
-
-                Thread.sleep(1);
-        }   
+        return "Battery Percentage";
 
     }
 

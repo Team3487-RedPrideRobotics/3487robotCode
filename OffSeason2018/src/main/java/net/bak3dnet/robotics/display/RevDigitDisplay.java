@@ -78,7 +78,9 @@ public class RevDigitDisplay {
 
                 try {
 					Thread.sleep(1);
-				} catch (InterruptedException e) {}
+				} catch (InterruptedException e) {
+                    break;
+                }
 
             }
 
@@ -107,8 +109,6 @@ public class RevDigitDisplay {
         return singleton;
 
     }
-
-    public void standardDisplay() {}
 
     public static RevDigitDisplay getInstance(String setToString) {
 

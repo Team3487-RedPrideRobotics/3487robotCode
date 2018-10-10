@@ -6,7 +6,7 @@ import java.text.NumberFormat;
 import edu.wpi.first.wpilibj.RobotController;
 import net.bak3dnet.robotics.display.RevDigitDisplay;
 
-public class BatteryPercentModule extends TickerTapeModule implements DisplayModuleBase {
+public class BatteryPercentModule implements DisplayModuleBase {
 
     private static final NumberFormat subHundo;
     private static final NumberFormat supHundo;
@@ -27,7 +27,7 @@ public class BatteryPercentModule extends TickerTapeModule implements DisplayMod
 
     private double getPercentage() {
         
-        return (RobotController.getBatteryVoltage()-12D)*10D;
+        return (RobotController.getBatteryVoltage()-12D)*100D;
 
     }
 
@@ -53,6 +53,11 @@ public class BatteryPercentModule extends TickerTapeModule implements DisplayMod
     public String toString() {
 
         return "Battery Percentage";
+
+    }
+
+    @Override
+    public void close() {
 
     }
 

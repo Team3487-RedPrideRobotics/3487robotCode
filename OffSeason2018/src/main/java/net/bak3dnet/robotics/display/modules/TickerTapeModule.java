@@ -6,15 +6,15 @@ import net.bak3dnet.robotics.display.DChar;
 
 public class TickerTapeModule implements DisplayModuleBase {
 
-    private String displayText;
+    protected String displayText;
 
     //Characters passing thru the display per minute
-    private double charPassRate;
+    protected double charPassRate;
 
-    private int sumDeltaTime;
-    private int currentPosition;
-    private int roundsCompleted;
-    private int spacing;
+    protected int sumDeltaTime;
+    protected int currentPosition;
+    protected int roundsCompleted;
+    protected int spacing;
     
     @Override
     public void task(RevDigitDisplay display, double deltaTime) {
@@ -23,7 +23,7 @@ public class TickerTapeModule implements DisplayModuleBase {
 
         if(sumDeltaTime >= charPassRate) {
 
-            getCurrentDChars();
+            display.setText(getCurrentDChars());
 
         }
 
@@ -33,6 +33,8 @@ public class TickerTapeModule implements DisplayModuleBase {
     public void close() {
 
         resetPosition();
+        sumDeltaTime = 0;
+        roundsCompleted = 0;
 
     }
 
@@ -98,7 +100,7 @@ public class TickerTapeModule implements DisplayModuleBase {
 
         DChar[] outString = new DChar[4];
 
-
+        //TODO Actually ticker.
 
         currentPosition++;
 

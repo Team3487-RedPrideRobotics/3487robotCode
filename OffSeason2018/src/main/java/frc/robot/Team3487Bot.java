@@ -20,7 +20,7 @@ public class Team3487Bot extends IterativeRobot {
 
     RevDigitDisplay display = RevDigitDisplay.getInstance();
 
-    display.setActiveModule(new RapidDiagnosticsModule(new BatteryPercentModule()));
+    display.setActiveModule(new RapidDiagnosticsModule(new BatteryPercentModule(12D)));
 
   }
 

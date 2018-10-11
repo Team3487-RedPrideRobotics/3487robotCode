@@ -6,6 +6,13 @@ import net.bak3dnet.robotics.display.modules.DisplayModuleBase;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * A module that is set to quickly switch between diagnostics modules.
+ * 
+ * @author Jake Armstrong
+ * @since  0.1.0
+ * @version 0.1.0
+ */
 public class RapidDiagnosticsModule extends TickerTapeModule implements DisplayModuleBase {
 
     private DisplayModuleBase activeModule;
@@ -57,7 +64,7 @@ public class RapidDiagnosticsModule extends TickerTapeModule implements DisplayM
 
     @Override
     public void task(RevDigitDisplay display, double delta) {
-
+        //TODO: Make a rising edge button detection.
         if(!introPlayed) {
 
             if(display.buttonB.get() == true) {
@@ -118,6 +125,11 @@ public class RapidDiagnosticsModule extends TickerTapeModule implements DisplayM
 
     }
 
+    /**
+     * Rapidly switches the active module.
+     * 
+     * @param module The module to switch to.
+     */
     public void switchModule(DisplayModuleBase module) {
 
         if(!(module instanceof RapidDiagnosticsModule)) {

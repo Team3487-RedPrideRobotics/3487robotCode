@@ -109,6 +109,11 @@ public class RevDigitDisplay {
 
     }
     
+    /**
+     * 
+     * @return Returns the singleton class, pre-initialized to ticker whatever string you have set.
+     * 
+     */
     public static RevDigitDisplay getInstance(String setToString) {
 
         singletonCheck();
@@ -122,6 +127,11 @@ public class RevDigitDisplay {
 
     }
 
+    /**
+     * 
+     *@return Returns the singleton class, pre-initialized to ticker whatever string you have set.
+     *  
+     */
     public static RevDigitDisplay getInstance(DChar[] dChars) {
 
         singletonCheck();
@@ -136,6 +146,11 @@ public class RevDigitDisplay {
 
     }
 
+    /**
+     * 
+     *@return Returns the singleton class, pre-initialized to ticker whatever string you have set.
+     *  
+     */
     public static RevDigitDisplay getInstance(double number) {
 
         singletonCheck();
@@ -165,6 +180,11 @@ public class RevDigitDisplay {
 
     }
 
+    /**
+     * 
+     * @param module Whichever module you want to have set to display.
+     * 
+     */
     public void setActiveModule(DisplayModuleBase module) {
 
         if(this.taskCoordinator != null) {
@@ -181,6 +201,11 @@ public class RevDigitDisplay {
 
     }
 
+    /**
+     * 
+     * @return Returns the current module that is being displayed right now.
+     * 
+     */
     public DisplayModuleBase getActiveModule() {
 
         return this.activeModule;

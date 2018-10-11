@@ -6,15 +6,30 @@ import java.text.NumberFormat;
 import edu.wpi.first.wpilibj.RobotController;
 import net.bak3dnet.robotics.display.RevDigitDisplay;
 
+/**
+ * A module dedicated to showing the current battery percentage of the battery.
+ * 
+ * @author Jake Armstrong
+ * @version 0.1.0
+ * @since 0.1.0
+ */
 public class BatteryPercentModule implements DisplayModuleBase {
 
     private static final NumberFormat subHundo;
     private static final NumberFormat supHundo;
 
+    private double emptyVoltage;
+
     static {
 
         subHundo = new DecimalFormat("#.##");
         supHundo = new DecimalFormat("#.#");
+
+    }
+
+    public BatteryPercentModule(double minVoltage) {
+
+        emptyVoltage = minVoltage;
 
     }
 
@@ -27,7 +42,7 @@ public class BatteryPercentModule implements DisplayModuleBase {
 
     private double getPercentage() {
         
-        return (RobotController.getBatteryVoltage()-12D)*100D;
+        return (RobotController.getBatteryVoltage()-emptyVoltage)*100D;
 
     }
 

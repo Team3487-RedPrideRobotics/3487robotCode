@@ -64,6 +64,11 @@ public class TickerTapeModule implements DisplayModuleBase {
 
     }
 
+    /**
+     * 
+     * @param object The object to be turned into a string
+     * @param spacing The spacing between the re-occuring string.
+     */
     public void setDisplayText(Object object, int spacing) {
 
         displayText = object.toString();
@@ -71,6 +76,20 @@ public class TickerTapeModule implements DisplayModuleBase {
         for(int i = 0; i < spacing; i++) {
 
             displayText += " ";
+
+        }
+
+        if(object.toString().length() < 4) {
+
+            String spacingBuffer = displayText;
+
+            for(int i = 0; i < 4-object.toString().length(); i++) {
+
+                spacingBuffer = " " + spacingBuffer;
+
+            }
+
+            displayText = spacingBuffer;
 
         }
         

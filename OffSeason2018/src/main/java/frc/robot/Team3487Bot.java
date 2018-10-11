@@ -5,7 +5,7 @@ import net.bak3dnet.robotics.display.RevDigitDisplay;
 import net.bak3dnet.robotics.display.modules.BatteryPercentModule;
 import net.bak3dnet.robotics.display.modules.RapidDiagnosticsModule;
 
-//import net.bak3dnet.robotics.display.RevDigitDisplay;
+import net.bak3dnet.robotics.display.RevDigitDisplay;
 
 public class Team3487Bot extends IterativeRobot {
 

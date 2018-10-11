@@ -6,6 +6,8 @@ import net.bak3dnet.robotics.display.modules.DisplayModuleBase;
 import java.util.ArrayList;
 import java.util.List;
 
+import edu.wpi.first.wpilibj.DigitalInput;
+
 /**
  * A module that is set to quickly switch between diagnostics modules.
  * 
@@ -21,6 +23,8 @@ public class RapidDiagnosticsModule extends TickerTapeModule implements DisplayM
     private List<DisplayModuleBase> modules;
 
     private int currentModule;
+
+    private boolean risingEdge;
 
     public RapidDiagnosticsModule(DisplayModuleBase[] modules) {
 
@@ -64,10 +68,10 @@ public class RapidDiagnosticsModule extends TickerTapeModule implements DisplayM
 
     @Override
     public void task(RevDigitDisplay display, double delta) {
-        //TODO: Make a rising edge button detection.
+        
         if(!introPlayed) {
 
-            if(display.buttonB.get() == true) {
+            if(isRisingEdge(display.buttonB)) {
 
                 introPlayed = true;
 
@@ -86,7 +90,7 @@ public class RapidDiagnosticsModule extends TickerTapeModule implements DisplayM
 
         if(!moduleIntroPlayed) {
         
-            if(display.buttonB.get() == true) {
+            if(isRisingEdge(display.buttonB) == true) {
 
                 moduleIntroPlayed = true;
 
@@ -111,8 +115,8 @@ public class RapidDiagnosticsModule extends TickerTapeModule implements DisplayM
             }
 
         }
+    
     }
-
 
     @Override
     public void close() {
@@ -144,6 +148,9 @@ public class RapidDiagnosticsModule extends TickerTapeModule implements DisplayM
 
     }
 
+    /**
+     * Iterative method to switch to the next module in the list.
+     */
     public void nextModule() {
 
         try{
@@ -152,7 +159,7 @@ public class RapidDiagnosticsModule extends TickerTapeModule implements DisplayM
 
         } catch(IndexOutOfBoundsException e) {
 
-            currentModule =0;
+            currentModule = 0;
             switchModule(modules.get(currentModule));
             return;
 
@@ -166,6 +173,30 @@ public class RapidDiagnosticsModule extends TickerTapeModule implements DisplayM
     public String toString() {
 
         return "Rapid Diagnostics";
+
+    }
+
+    private boolean isRisingEdge(DigitalInput input) {
+
+        if(input.get() && risingEdge) {
+
+            return false;
+
+        } else if(input.get()&&!risingEdge) {
+
+            risingEdge = true;
+            return true;
+
+        } else if(!input.get()&&risingEdge) {
+
+            risingEdge = false;
+            return false;
+
+        } else {
+
+            return false;
+        
+        }
 
     }
 

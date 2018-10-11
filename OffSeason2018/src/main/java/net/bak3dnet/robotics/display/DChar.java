@@ -20,7 +20,7 @@ public class DChar {
     }
     
 /**
- * Don't use the DChar constructor. Please see {@link #DCharFactory}
+ * Don't use the DChar constructor. Please see {@link DCharFactory}
  * 
  * @param encapsulatedChar The encapsulated char that is represented
  * @param hasDecimalPoint True if there should be a decimal in the current display character

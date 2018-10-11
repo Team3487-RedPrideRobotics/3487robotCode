@@ -1,13 +1,9 @@
 package net.bak3dnet.robotics.display;
 
+import edu.wpi.first.wpilibj.AnalogInput;
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.I2C;
 import edu.wpi.first.wpilibj.I2C.Port;
-//import edu.wpi.first.wpilibj.DigitalInput;
-//import edu.wpi.first.wpilibj.AnalogInput;
-
-import net.bak3dnet.robotics.display.DChar;
-import net.bak3dnet.robotics.display.DCharFactory;
 
 import net.bak3dnet.robotics.display.modules.DisplayModuleBase;
 import net.bak3dnet.robotics.display.modules.TickerTapeModule;
@@ -17,7 +13,7 @@ import net.bak3dnet.robotics.display.modules.TickerTapeModule;
  * @author Jake Armstrong
  * @version 0.0.1
  * @since 0.1.0
- *  
+ * 
  */
 public class RevDigitDisplay {
 
@@ -29,24 +25,33 @@ public class RevDigitDisplay {
      * Processor Chip Commands:
      * Source: https://cdn-shop.adafruit.com/datasheets/ht16K33v110.pdf
      * 
-     * oscilatorX determines if the chip is updating the display
-     * 
-     * defBlinkin: The default setting of wheter or not to blink.
-     *  - Default set to off.
-     * 
-     * defBrightness: Sets the default brightess of the display
-     *  - Default set to bright
+     * Constants!
      * 
      */
-    public static final byte[] oscilatorOn = {(byte) 0x21}; 
-    public static final byte[] oscilatorOff = {(byte) 0x20};
 
-    private final byte[] defBlinking = {(byte) 0x81};
+     /**
+      * Sets the display to active.
+      */
+    public static final byte[] OSCILATOR_ON = {(byte) 0x21}; 
+    /**
+     *  Sets the display to inactive.
+     */
+    public static final byte[] OSCILATOR_OFF = {(byte) 0x20};
 
-    private final byte[] defBrightness = {(byte) 0xEF};
+    /**
+     * Sets the blinking to off.
+     */
+    private final byte[] DEFAULT_BLINKING = {(byte) 0x81};
+
+    /**
+     * Sets the brightness to bright.
+     */
+    private final byte[] DEFAULT_BRIGHTNESS = {(byte) 0xEF};
 
     public DigitalInput buttonA;
     public DigitalInput buttonB;
+
+    public AnalogInput potentiometer;
 
     private DisplayModuleBase activeModule;
     private DisplayTaskManager taskManager;
@@ -110,6 +115,7 @@ public class RevDigitDisplay {
     }
     
     /**
+     * @param setToString The string to pre initialize with.
      * 
      * @return Returns the singleton class, pre-initialized to ticker whatever string you have set.
      * 
@@ -128,6 +134,7 @@ public class RevDigitDisplay {
     }
 
     /**
+     * @param dChars A set of dChars to pre-initialize with.
      * 
      *@return Returns the singleton class, pre-initialized to ticker whatever string you have set.
      *  
@@ -147,7 +154,7 @@ public class RevDigitDisplay {
     }
 
     /**
-     * 
+     * @param number A double to be pre-initialized with.
      *@return Returns the singleton class, pre-initialized to ticker whatever string you have set.
      *  
      */
@@ -168,13 +175,15 @@ public class RevDigitDisplay {
         buttonA = new DigitalInput(19);
         buttonB = new DigitalInput(20);
 
+        potentiometer = new AnalogInput(3);
+
         i2c = new I2C(Port.kMXP,0x70);
         
-        i2c.writeBulk(oscilatorOn);
+        i2c.writeBulk(OSCILATOR_ON);
 
-        i2c.writeBulk(defBrightness);
+        i2c.writeBulk(DEFAULT_BRIGHTNESS);
 
-        i2c.writeBulk(defBlinking);
+        i2c.writeBulk(DEFAULT_BLINKING);
 
         taskManager = new DisplayTaskManager(this);
 

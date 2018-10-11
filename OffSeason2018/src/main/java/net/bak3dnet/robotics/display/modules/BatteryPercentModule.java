@@ -4,6 +4,7 @@ import java.text.DecimalFormat;
 import java.text.NumberFormat;
 
 import edu.wpi.first.wpilibj.RobotController;
+
 import net.bak3dnet.robotics.display.RevDigitDisplay;
 
 /**

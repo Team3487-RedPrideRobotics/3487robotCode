@@ -312,7 +312,7 @@ public class TickerTapeModule implements DisplayModuleBase {
      * 
      * Displays a single character on the display.
      * 
-     * @param character
+     * @param character The character to be displayed.
      */
 
     public void setDisplayText(char character) {
@@ -335,8 +335,8 @@ public class TickerTapeModule implements DisplayModuleBase {
     }
 
     /**
-     * The objects to be stringified. (☉_☉)
-     * @param objects 
+     * Stringifies objects and puts them on the display 
+     * @param objects  The objects to be stringified.(☉_☉)
      */
 
     public void setDisplayText(Object[] objects) {
@@ -355,10 +355,10 @@ public class TickerTapeModule implements DisplayModuleBase {
     }
 
     /**
-     * The objects to be stringified. ~~~~~~~~~~~~~~~~~~~~~~~
+     * The objects to be stringified. 
      * 
-     * @param objects
-     * @param spacing
+     * @param objects Objects to be STRINGIFIED. ~~~~~~~~~~~~~~~~~~~~~~~
+     * @param spacing スパイスing. 
      */
 
     public void setDisplayText(Object[] objects, int spacing) {
@@ -410,7 +410,8 @@ public class TickerTapeModule implements DisplayModuleBase {
     }
       
     /**
-    * Resets the current postion of the string.
+    * Gets the current postion of the string.
+    * @return Returns the index of the last character on the display.
     */
 
     public int getCurrentPosition() {

@@ -10,6 +10,8 @@ public class Robot extends IterativeRobot {
   private Joystick leftStick;
   private Joystick rightStick;
 
+  //RobotController.getBatteryVoltage();
+
   @Override
   public void robotInit() {
     myRobot = new DifferentialDrive(new Spark(0), new Spark(1));

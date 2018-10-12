@@ -358,7 +358,7 @@ public class TickerTapeModule implements DisplayModuleBase {
      * The objects to be stringified. 
      * 
      * @param objects Objects to be STRINGIFIED. ~~~~~~~~~~~~~~~~~~~~~~~
-     * @param spacing スパイスing. 
+     * @param spacing スペースing. 
      */
 
     public void setDisplayText(Object[] objects, int spacing) {

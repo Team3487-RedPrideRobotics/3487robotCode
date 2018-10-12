@@ -69,6 +69,8 @@ public class RapidDiagnosticsModule extends TickerTapeModule implements DisplayM
     @Override
     public void task(RevDigitDisplay display, double delta) {
         
+        this.setCharPassRate(display.potentiometer.get()*200);
+
         if(!introPlayed) {
 
             if(isRisingEdge(display.buttonB)) {

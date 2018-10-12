@@ -6,7 +6,6 @@ import net.bak3dnet.robotics.display.modules.DisplayModuleBase;
 import java.util.ArrayList;
 import java.util.List;
 
-import edu.wpi.first.wpilibj.AnalogPotentiometer;
 import edu.wpi.first.wpilibj.DigitalInput;
 
 /**
@@ -70,7 +69,7 @@ public class RapidDiagnosticsModule extends TickerTapeModule implements DisplayM
     @Override
     public void task(RevDigitDisplay display, double delta) {
         
-        super.setCharPassRate(new AnalogPotentiometer(78).get()*10D);
+        this.setCharPassRate(display.potentiometer.get()*200);
 
         if(!introPlayed) {
 

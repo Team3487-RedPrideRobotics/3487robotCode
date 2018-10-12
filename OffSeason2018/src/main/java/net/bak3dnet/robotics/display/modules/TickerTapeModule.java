@@ -16,13 +16,6 @@ public class TickerTapeModule implements DisplayModuleBase {
      */
     protected double charPassRate;
 
-    /**
-     * Change in time by milliseconds
-     */
-
-    //Characters passing thru the display per minute
-    protected double charPassRate;
-
     protected int sumDeltaTime;
     protected int currentPosition;
     protected int roundsCompleted;
@@ -45,8 +38,6 @@ public class TickerTapeModule implements DisplayModuleBase {
 
         if(sumDeltaTime >= (charPassRate/60)*1000) {
 
-        if(sumDeltaTime >= charPassRate) {
-
             display.setText(getCurrentDChars());
             sumDeltaTime = 0;
 
@@ -62,6 +53,11 @@ public class TickerTapeModule implements DisplayModuleBase {
         roundsCompleted = 0;
 
     }
+
+    /**
+     * Sets an object to be stringified.
+     * @param object The object to be stringified.
+     */
 
     public void setDisplayText(Object object) {
 
@@ -316,7 +312,7 @@ public class TickerTapeModule implements DisplayModuleBase {
      * 
      * Displays a single character on the display.
      * 
-     * @param character
+     * @param character The character to be displayed.
      */
 
     public void setDisplayText(char character) {
@@ -339,8 +335,8 @@ public class TickerTapeModule implements DisplayModuleBase {
     }
 
     /**
-     * The objects to be stringified. (☉_☉)
-     * @param objects 
+     * Stringifies objects and puts them on the display 
+     * @param objects  The objects to be stringified.(☉_☉)
      */
 
     public void setDisplayText(Object[] objects) {
@@ -359,10 +355,10 @@ public class TickerTapeModule implements DisplayModuleBase {
     }
 
     /**
-     * The objects to be stringified. ~~~~~~~~~~~~~~~~~~~~~~~
+     * The objects to be stringified. 
      * 
-     * @param objects
-     * @param spacing
+     * @param objects Objects to be STRINGIFIED. ~~~~~~~~~~~~~~~~~~~~~~~
+     * @param spacing スペースing. 
      */
 
     public void setDisplayText(Object[] objects, int spacing) {
@@ -381,44 +377,6 @@ public class TickerTapeModule implements DisplayModuleBase {
         }
 
         setDisplayText(primaryString);
-
-    }
-
-    /**
-     * 
-     * Gets the dchars for the current iteration of the display.
-     * 
-     * @return DChar array, for the display.
-     */
-
-    public DChar[] getCurrentDChars() {
-
-        if(displayBuffer.length > 4) {
-            outDString[0] = outDString[1];
-            outDString[1] = outDString[2];
-            outDString[2] = outDString[3];
-
-            try {
-
-                outDString[3] = displayBuffer[currentPosition];
-
-            } catch(IndexOutOfBoundsException e) {
-
-                outDString[3] = displayBuffer[currentPosition];
-                currentPosition = 0;
-                roundsCompleted++;
-
-            }
-
-            currentPosition++;
-
-            return outDString;
-
-        } else {
-
-            return displayBuffer;
-
-        }
 
     }
 
@@ -452,7 +410,8 @@ public class TickerTapeModule implements DisplayModuleBase {
     }
       
     /**
-    * Resets the current postion of the string.
+    * Gets the current postion of the string.
+    * @return Returns the index of the last character on the display.
     */
 
     public int getCurrentPosition() {
@@ -486,5 +445,4 @@ public class TickerTapeModule implements DisplayModuleBase {
     }
 
 
-}
 }

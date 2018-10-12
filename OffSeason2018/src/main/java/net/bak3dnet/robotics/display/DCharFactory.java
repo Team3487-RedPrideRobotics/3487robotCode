@@ -196,7 +196,6 @@ public class DCharFactory {
      * @param withDecimal Determines if it has a decimal.
      * @return Returns a single DChar with the encapsulated preChar.
      */
-  
     public static DChar getDChar(char preChar, boolean withDecimal) {
 
         String capStr = Character.toString(preChar);

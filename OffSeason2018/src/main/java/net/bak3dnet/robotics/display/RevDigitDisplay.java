@@ -1,6 +1,6 @@
 package net.bak3dnet.robotics.display;
 
-import edu.wpi.first.wpilibj.AnalogInput;
+import edu.wpi.first.wpilibj.AnalogPotentiometer;
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.I2C;
 import edu.wpi.first.wpilibj.I2C.Port;
@@ -51,7 +51,7 @@ public class RevDigitDisplay {
     public DigitalInput buttonA;
     public DigitalInput buttonB;
 
-    public AnalogInput potentiometer;
+    public AnalogPotentiometer potentiometer;
 
     private DisplayModuleBase activeModule;
     private DisplayTaskManager taskManager;
@@ -175,8 +175,7 @@ public class RevDigitDisplay {
         buttonA = new DigitalInput(19);
         buttonB = new DigitalInput(20);
 
-        //You won't get the reference
-        potentiometer = new AnalogInput(78);
+        potentiometer = new AnalogPotentiometer(78);
 
         i2c = new I2C(Port.kMXP,0x70);
         

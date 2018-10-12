@@ -19,6 +19,10 @@ public class TickerTapeModule implements DisplayModuleBase {
     /**
      * Change in time by milliseconds
      */
+
+    //Characters passing thru the display per minute
+    protected double charPassRate;
+
     protected int sumDeltaTime;
     protected int currentPosition;
     protected int roundsCompleted;
@@ -40,6 +44,8 @@ public class TickerTapeModule implements DisplayModuleBase {
         sumDeltaTime += deltaTime;
 
         if(sumDeltaTime >= (charPassRate/60)*1000) {
+
+        if(sumDeltaTime >= charPassRate) {
 
             display.setText(getCurrentDChars());
             sumDeltaTime = 0;
@@ -112,6 +118,7 @@ public class TickerTapeModule implements DisplayModuleBase {
      * @param bool The boolean to be evaluated.
      * @param displayAsWord Whether to describe as true or 1.
      */
+
     public void setDisplayText(boolean bool, boolean displayAsWord) {
 
         if(displayAsWord) {
@@ -131,6 +138,7 @@ public class TickerTapeModule implements DisplayModuleBase {
      * @param displayAsWord Whether to describe as false or 0.
      * @param spacing The spacing between each showing of the data.
      */
+
     public void setDisplayText(boolean bool, boolean displayAsWord, int spacing) {
 
         if(displayAsWord) {
@@ -150,6 +158,7 @@ public class TickerTapeModule implements DisplayModuleBase {
      * 
      * @param number The integer to be displayed.
      */
+
     public void setDisplayText(int number) {
 
         setDisplayText(Integer.toString(number));
@@ -175,6 +184,7 @@ public class TickerTapeModule implements DisplayModuleBase {
      * 
      * @param Byte The byte to be displayed.
      */
+
     public void setDisplayText(byte Byte) {
 
         String binaryString = String.format("%8s", Integer.toBinaryString((int)Byte&0xFF)).replace(' ','0');
@@ -203,6 +213,7 @@ public class TickerTapeModule implements DisplayModuleBase {
      * 
      * @param number The number.
      */
+
     public void setDisplayText(long number) {
 
         setDisplayText(Long.toString(number));
@@ -227,6 +238,7 @@ public class TickerTapeModule implements DisplayModuleBase {
      * 
      * @param number The number.
      */
+
     public void setDisplayText(short number) {
 
         setDisplayText(Short.toString(number));
@@ -239,6 +251,7 @@ public class TickerTapeModule implements DisplayModuleBase {
      * @param number The number.
      * @param spacing The spacing between the digits.
      */
+
     public void setDisplayText(short number, int spacing) {
 
         setDisplayText(Short.toString(number), spacing);
@@ -292,6 +305,7 @@ public class TickerTapeModule implements DisplayModuleBase {
      * @param number The number.
      * @param spacing The Spacing®. (Not actually registered)
      */
+      
     public void setDisplayText(double number, int spacing) {
 
         setDisplayText(Double.toString(number), spacing);
@@ -310,6 +324,7 @@ public class TickerTapeModule implements DisplayModuleBase {
         setDisplayText(Character.toString(character));
 
     }
+
     /**
      * Displays a single character on the display.
      * 
@@ -411,6 +426,35 @@ public class TickerTapeModule implements DisplayModuleBase {
      * Gets the current position of the display.
      * @return The current position.
      */
+
+    public DChar[] getCurrentDChars() {
+
+        outDString[0] = outDString[1];
+        outDString[1] = outDString[2];
+        outDString[2] = outDString[3];
+
+        try {
+
+            outDString[3] = displayBuffer[currentPosition];
+
+        } catch(IndexOutOfBoundsException e) {
+
+            outDString[3] = displayBuffer[currentPosition];
+            currentPosition = 0;
+            roundsCompleted++;
+
+        }
+
+        currentPosition++;
+
+        return outDString;
+
+    }
+      
+    /**
+    * Resets the current postion of the string.
+    */
+
     public int getCurrentPosition() {
 
         return currentPosition;
@@ -420,12 +464,13 @@ public class TickerTapeModule implements DisplayModuleBase {
     /**
      * Resets the position.
      */
+      
     public void resetPosition(){
 
         currentPosition = 0;
 
     }
-
+      
     /**
      * @param charPassRate the charPassRate to set
      */
@@ -440,4 +485,6 @@ public class TickerTapeModule implements DisplayModuleBase {
 
     }
 
+
+}
 }

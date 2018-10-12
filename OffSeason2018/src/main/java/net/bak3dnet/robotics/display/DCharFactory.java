@@ -189,6 +189,13 @@ public class DCharFactory {
 
     }
 
+    /**
+     * Gets a DChar for one specific character.
+     * 
+     * @param preChar The char to be encapsulated.
+     * @param withDecimal Determines if it has a decimal.
+     * @return Returns a single DChar with the encapsulated preChar.
+     */
     public static DChar getDChar(char preChar, boolean withDecimal) {
 
         String capStr = Character.toString(preChar);

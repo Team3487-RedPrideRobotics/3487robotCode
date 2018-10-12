@@ -11,7 +11,9 @@ public class TickerTapeModule implements DisplayModuleBase {
 
     protected String displayText;
 
-    //Characters passing thru the display per minute
+    /**
+     * Characters per minute
+     */
     protected double charPassRate;
 
     protected int sumDeltaTime;
@@ -25,6 +27,8 @@ public class TickerTapeModule implements DisplayModuleBase {
 
         Arrays.fill(outDString, DCharFactory.getDChar(' ', false));
 
+        this.charPassRate = 50;
+
     }
     
     @Override
@@ -32,7 +36,7 @@ public class TickerTapeModule implements DisplayModuleBase {
 
         sumDeltaTime += deltaTime;
 
-        if(sumDeltaTime >= charPassRate) {
+        if(sumDeltaTime >= (charPassRate/60)*1000) {
 
             display.setText(getCurrentDChars());
             sumDeltaTime = 0;
@@ -99,6 +103,13 @@ public class TickerTapeModule implements DisplayModuleBase {
 
     }
 
+    /**
+     * Displays a boolean on the display.
+     * 
+     * @param bool The boolean to be evaluated.
+     * @param displayAsWord Whether to describe as true or 1.
+     */
+
     public void setDisplayText(boolean bool, boolean displayAsWord) {
 
         if(displayAsWord) {
@@ -110,6 +121,14 @@ public class TickerTapeModule implements DisplayModuleBase {
         }
 
     }
+
+    /**
+     * Displays a boolean, with spacing!
+     * 
+     * @param bool The boolean to be evaluated.
+     * @param displayAsWord Whether to describe as false or 0.
+     * @param spacing The spacing between each showing of the data.
+     */
 
     public void setDisplayText(boolean bool, boolean displayAsWord, int spacing) {
 
@@ -125,17 +144,37 @@ public class TickerTapeModule implements DisplayModuleBase {
 
     }
 
+    /**
+     * Displays an integer on the display.
+     * 
+     * @param number The integer to be displayed.
+     */
+
     public void setDisplayText(int number) {
 
         setDisplayText(Integer.toString(number));
 
     }
 
+    /**
+     * 
+     * Displays an integer on the display.
+     * 
+     * @param number The integer to be displayed.
+     * @param spacing SPACING! How far you want inbetween the digits.
+     */
+
     public void setDisplayText(int number, int spacing) {
 
         setDisplayText(Integer.toString(number), spacing);
 
     }
+
+    /**
+     * Displays a byte on the display. Note that it displays the binary, not the raw byte on the leds. See {@link DChar}'s constructor.
+     * 
+     * @param Byte The byte to be displayed.
+     */
 
     public void setDisplayText(byte Byte) {
 
@@ -144,6 +183,14 @@ public class TickerTapeModule implements DisplayModuleBase {
         this.setDisplayText(binaryString);
     }
 
+    /**
+     * 
+     * Displays a byte on the display. Note that it displays the binary, not the raw byte on the leds. See {@link DChar}'s constructor.
+     * 
+     * @param Byte The byte to be displayed.
+     * @param spacing The spacing between binary segments.
+     */
+
     public void setDisplayText(byte Byte, int spacing) {
 
         String binaryString = String.format("%8s", Integer.toBinaryString((int)Byte&0xFF)).replace(' ','0');
@@ -151,11 +198,25 @@ public class TickerTapeModule implements DisplayModuleBase {
         this.setDisplayText(binaryString, spacing);
     }
 
+    /**
+     * 
+     * Displays a <code>long</code> number.
+     * 
+     * @param number The number.
+     */
+
     public void setDisplayText(long number) {
 
         setDisplayText(Long.toString(number));
 
     }
+
+    /**
+     * Displays a <code>long</code> number.
+     * 
+     * @param number The number.
+     * @param spacing The spacing between digits.
+     */
 
     public void setDisplayText(long number, int spacing) {
 
@@ -163,11 +224,24 @@ public class TickerTapeModule implements DisplayModuleBase {
 
     }
 
+    /**
+     * Displays a <code>short</code> number.
+     * 
+     * @param number The number.
+     */
+
     public void setDisplayText(short number) {
 
         setDisplayText(Short.toString(number));
 
     }
+
+    /**
+     * Displays a <code>short</code> number.
+     * 
+     * @param number The number.
+     * @param spacing The spacing between the digits.
+     */
 
     public void setDisplayText(short number, int spacing) {
 
@@ -175,11 +249,26 @@ public class TickerTapeModule implements DisplayModuleBase {
 
     }
 
+    /**
+     * 
+     * Displays a <code>float</code> number.
+     * 
+     * @param number The number.
+     */
+
     public void setDisplayText(float number) {
 
         setDisplayText(Float.toString(number));
         
     }
+
+    /**
+     * 
+     * Displays a <code>float</code> number.
+     * 
+     * @param number The number.
+     * @param spacing The spacing between the digits.
+     */
 
     public void setDisplayText(float number, int spacing) {
 
@@ -187,17 +276,39 @@ public class TickerTapeModule implements DisplayModuleBase {
 
     }
 
+    /**
+     * 
+     * Displays a <code>double</code> number.
+     * 
+     * @param number The number.
+     */
+
     public void setDisplayText(double number) {
 
         setDisplayText(Double.toString(number));
 
     }
 
+    /**
+     * 
+     * Displays <code>double</code> number.
+     * 
+     * @param number The number.
+     * @param spacing The Spacing®. (Not actually registered)
+     */
+      
     public void setDisplayText(double number, int spacing) {
 
         setDisplayText(Double.toString(number), spacing);
 
     }
+
+    /**
+     * 
+     * Displays a single character on the display.
+     * 
+     * @param character
+     */
 
     public void setDisplayText(char character) {
 
@@ -205,11 +316,23 @@ public class TickerTapeModule implements DisplayModuleBase {
 
     }
 
+    /**
+     * Displays a single character on the display.
+     * 
+     * @param character The character.
+     * @param spacing Space jvm. Space. Space. Space. Espai. Espacio. Espace. Locus. Chaw seem. 宇宙. 空間. 공간. (The spacing between characters).
+     */
+
     public void setDisplayText(char character, int spacing) {
 
         setDisplayText(Character.toString(character), spacing);
 
     }
+
+    /**
+     * The objects to be stringified. (☉_☉)
+     * @param objects 
+     */
 
     public void setDisplayText(Object[] objects) {
 
@@ -225,6 +348,13 @@ public class TickerTapeModule implements DisplayModuleBase {
         setDisplayText(primaryString);
 
     }
+
+    /**
+     * The objects to be stringified. ~~~~~~~~~~~~~~~~~~~~~~~
+     * 
+     * @param objects
+     * @param spacing
+     */
 
     public void setDisplayText(Object[] objects, int spacing) {
 
@@ -244,6 +374,11 @@ public class TickerTapeModule implements DisplayModuleBase {
         setDisplayText(primaryString);
 
     }
+
+    /**
+     * Gets the current position of the display.
+     * @return The current position.
+     */
 
     public DChar[] getCurrentDChars() {
 
@@ -268,6 +403,10 @@ public class TickerTapeModule implements DisplayModuleBase {
         return outDString;
 
     }
+      
+    /**
+    * Resets the current postion of the string.
+    */
 
     public int getCurrentPosition() {
 
@@ -275,10 +414,21 @@ public class TickerTapeModule implements DisplayModuleBase {
 
     }
 
+    /**
+     * Resets the position.
+     */
+      
     public void resetPosition(){
 
         currentPosition = 0;
 
+    }
+      
+    /**
+     * @param charPassRate the charPassRate to set
+     */
+    public void setCharPassRate(double charPassRate) {
+        this.charPassRate = charPassRate;
     }
 
     @Override
@@ -287,5 +437,6 @@ public class TickerTapeModule implements DisplayModuleBase {
         return "Ticker Tape";
 
     }
+
 
 }

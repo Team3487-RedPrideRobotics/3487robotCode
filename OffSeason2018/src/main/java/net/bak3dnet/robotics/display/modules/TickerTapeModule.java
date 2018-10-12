@@ -444,5 +444,4 @@ public class TickerTapeModule implements DisplayModuleBase {
 
     }
 
-
 }

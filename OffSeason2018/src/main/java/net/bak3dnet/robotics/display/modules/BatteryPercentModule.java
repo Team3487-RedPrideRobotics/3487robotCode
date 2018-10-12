@@ -28,12 +28,6 @@ public class BatteryPercentModule implements DisplayModuleBase {
 
     }
 
-    /**
-     * Constructs the BatteryPercentModule with the percentage at which the battery is at 0%.
-     * 
-     * @param minVoltage The voltage for when the battery is at 0%
-     */
-  
     public BatteryPercentModule(double minVoltage) {
 
         emptyVoltage = minVoltage;
@@ -47,12 +41,6 @@ public class BatteryPercentModule implements DisplayModuleBase {
 
     }
 
-    /**
-     * Gets the percentage of the battery.
-     * 
-     * @return The current percentage of the battery.
-     */
-  
     private double getPercentage() {
         
         return (RobotController.getBatteryVoltage()-emptyVoltage)*100D;

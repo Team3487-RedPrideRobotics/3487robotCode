@@ -54,6 +54,11 @@ public class TickerTapeModule implements DisplayModuleBase {
 
     }
 
+    /**
+     * Sets an object to be stringified.
+     * @param object The object to be stringified.
+     */
+
     public void setDisplayText(Object object) {
 
         if(object.toString().charAt(object.toString().length()-1) == ' ') {

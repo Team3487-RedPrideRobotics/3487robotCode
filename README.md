@@ -7,4 +7,4 @@ The purpose of the repository is to increase the workflow and efficiency of the 
 Please read the [contributing file](https://github.com/team3487/3487robotCode/blob/master/CONTRIBUTING.md) for contribution instructions.
 
 ## Documentation
-For Documentation on all custom APIs, please see the [javadoc](https://team3487.github.io/3487robotCode/index.html).
+For Documentation on all custom APIs, please see the [javadoc](https://lainkai.github.io/RevDigitMXPDisplayDriver/).

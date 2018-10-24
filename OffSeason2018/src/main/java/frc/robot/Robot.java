@@ -1,4 +1,6 @@
-package frc.robot System.out.Pritln ("Add a comment on line one");
+//If Blind people cant see  then why can Blind people not see//
+
+package frc.robot; 
 
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.Joystick;

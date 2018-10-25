@@ -31,6 +31,8 @@ public class DChar {
 
         int preInt = (int) matrixData[1];
 
+        this.encapsulatedChar = encapsulatedChar;
+
         if(hasDecimalPoint) {
             //This edits the bit with the decimal point
             preInt+=64;

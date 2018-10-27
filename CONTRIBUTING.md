@@ -46,5 +46,6 @@ Then compare changes of your repo to the main team3487 repo.
 - Taylor
 - Brenden
 - Jake
-
 (List subject to change)
+
+If a superior makes a change you don't agree with, ask them to fix it. Otherwise, don't make a change.

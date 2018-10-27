@@ -1,9 +1,9 @@
 package frc.robot;
 
 import edu.wpi.first.wpilibj.IterativeRobot;
-import net.bak3dnet.robotics.display.RevDigitDisplay;
-import net.bak3dnet.robotics.display.modules.BatteryPercentModule;
-import net.bak3dnet.robotics.display.modules.RapidDiagnosticsModule;
+import net.bak3dnet.robotics.displays.RevDigitDisplay;
+import net.bak3dnet.robotics.displays.modules.BatteryPercentModule;
+import net.bak3dnet.robotics.displays.modules.RapidDiagnosticsModule;
 
 public class TutorialBot extends IterativeRobot {
 

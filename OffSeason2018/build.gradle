@@ -3,7 +3,7 @@ plugins {
     id "edu.wpi.first.GradleRIO" version "2019.0.0-alpha-3"
 }
 
-def ROBOT_CLASS = "frc.robot.Robot"
+def ROBOT_CLASS = "frc.robot.TutorialBot"
 
 // Define my targets (RoboRIO) and artifacts (deployable files)
 // This is added by GradleRIO's backing project EmbeddedTools.
@@ -40,7 +40,10 @@ dependencies {
     compile wpilib()
     compile ctre()
     compile navx()
-    compile 'robotics:Display-Drivers:1.0'
+    compile 'robotics:Display-Drivers:1.0.1'
+
+    //compile group: 'org.apache.logging.log4j', name: 'log4j-api', version: '2.11.1'
+    //compile group: 'org.apache.logging.log4j', name: 'log4j-core', version: '2.11.1'
 }
 
 // Setting up my Jar File. In this case, adding all libraries into the main jar ('fat jar')

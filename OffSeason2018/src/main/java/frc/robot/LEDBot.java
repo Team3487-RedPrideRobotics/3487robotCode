@@ -5,6 +5,9 @@ import edu.wpi.first.wpilibj.SerialPort;
 import edu.wpi.first.wpilibj.SerialPort.Port;
 import java.util.Arrays;
 
+import net.bak3dnet.robotics.displays.RevDigitDisplay;
+import net.bak3dnet.robotics.displays.modules.BatteryPercentModule;;
+
 public class LEDBot extends IterativeRobot {
 
   //RobotController.getBatteryVoltage();
@@ -12,6 +15,9 @@ public class LEDBot extends IterativeRobot {
 
   @Override
   public void robotInit() {
+
+    RevDigitDisplay display = RevDigitDisplay.getInstance();
+    display.setActiveModule(new BatteryPercentModule(12D));
 
      ledController = new SerialPort(115200, Port.kOnboard);
      byte[] dataOut = new byte[14];

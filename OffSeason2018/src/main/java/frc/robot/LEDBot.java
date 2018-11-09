@@ -34,6 +34,12 @@ public class LEDBot extends IterativeRobot {
      }
      dataOut[13] = (byte) checkSum;
 
+     for(int i=0;i<13;i++) {
+
+      dataOut[i] =(byte) ~ dataOut[i];
+
+     }
+
      ledController.write(dataOut, 14);
 
 

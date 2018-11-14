@@ -20,26 +20,24 @@ public class LEDBot extends IterativeRobot {
     display.setActiveModule(new BatteryPercentModule(12D));
 
     ledController = new SerialPort(115200, Port.kOnboard);
+    ledController.setWriteBufferMode(SerialPort.WriteBufferMode.kFlushOnAccess);
+
     byte[] dataOut = new byte[14];
     Arrays.fill(dataOut, (byte)0x00);
     dataOut[0] = (byte)0xAA;
+
+    //Sets one of the strips to yellow.
     dataOut[1] = (byte)0xff;
     dataOut[2] = (byte)0xff;
      
-    short checkSum = 0;
-    for(short i =0; i <13;i++) {
+    byte checkSum = 0;
+    for(byte i =0; i <13;i++) {
 
       checkSum += dataOut[i];
 
     }
 
-     dataOut[13] = (byte) checkSum;
-
-    for(int i=0;i<13;i++) {
-
-      dataOut[i] =(byte) ~ dataOut[i];
-
-    }
+    dataOut[13] = checkSum;
 
     ledController.write(dataOut, 14);
 

@@ -59,7 +59,6 @@ public class LEDBot extends IterativeRobot {
   @Override
   public void teleopPeriodic() {
 
-    
     myRobot.tankDrive(leftStick.getY(), rightStick.getY());
 
   }

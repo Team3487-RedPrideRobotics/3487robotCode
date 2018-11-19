@@ -1,5 +1,9 @@
 package frc.robot;
 
+import edu.wpi.first.wpilibj.drive.DifferentialDrive;
+import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.Spark;
+
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.SerialPort;
 import edu.wpi.first.wpilibj.SerialPort.Port;
@@ -13,12 +17,21 @@ public class LEDBot extends IterativeRobot {
   //RobotController.getBatteryVoltage();
   SerialPort ledController;
 
+  DifferentialDrive myRobot;
+  Joystick leftStick;
+  Joystick  rightStick;
+
   @Override
   public void robotInit() {
+
+    myRobot = new DifferentialDrive(new Spark(0), new Spark(1));
+    leftStick = new Joystick(0);
+    rightStick = new Joystick(1);
 
     RevDigitDisplay display = RevDigitDisplay.getInstance();
     display.setActiveModule(new BatteryPercentModule(12D));
 
+    //Led Controller Test Code
     ledController = new SerialPort(115200, Port.kOnboard);
     ledController.setWriteBufferMode(SerialPort.WriteBufferMode.kFlushOnAccess);
 
@@ -26,7 +39,7 @@ public class LEDBot extends IterativeRobot {
     Arrays.fill(dataOut, (byte)0x00);
     dataOut[0] = (byte)0xAA;
 
-    //Sets one of the strips to yellow.
+    //Sets Strip One to Yellow
     dataOut[1] = (byte)0xff;
     dataOut[2] = (byte)0xff;
      
@@ -47,6 +60,7 @@ public class LEDBot extends IterativeRobot {
   public void teleopPeriodic() {
 
     
+    myRobot.tankDrive(leftStick.getY(), rightStick.getY());
 
   }
   
